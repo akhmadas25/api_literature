@@ -21,6 +21,8 @@ module.exports = {
         address: "jl. KH Abu Su'ud",
         picture: "profile.jpg",
         status: "admin",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       },
     ]);
   },
