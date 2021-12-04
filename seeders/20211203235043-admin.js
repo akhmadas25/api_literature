@@ -11,8 +11,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert("users", [
-      {
+    await queryInterface.bulkInsert("users", [{
         fullname: "Akhmad Syaifudin",
         email: "admin@mail.com",
         password:
@@ -21,8 +20,7 @@ module.exports = {
         address: "jl. KH Abu Su'ud",
         picture: "profile.jpg",
         status: "admin",
-      },
-    ]);
+      }]);
   },
 
   down: async (queryInterface, Sequelize) => {
