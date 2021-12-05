@@ -121,10 +121,10 @@ exports.searchLiteraturs = async (req, res) => {
         title: {
           [Op.substring]: `%${title}%`,
         },
-        // publication_date: {
-        //   [Op.startsWith]: `%${year}`,
-        // },
-        // status: "verified",
+        publication_date: {
+          [Op.substring]: `%${year}`,
+        },
+        status: "verified",
       },
       include: [
         {
