@@ -1,5 +1,6 @@
 const { literatur, user } = require("../../models");
-const { Op } = require("sequelize");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 exports.addLiteratur = async (req, res) => {
   try {
@@ -121,7 +122,7 @@ exports.searchLiteraturs = async (req, res) => {
           [Op.substring]: `%${title}%`,
         },
         publication_date: {
-          [Op.startsWith]: `%${year}%`,
+          [Op.startsWith]: `%${year}`,
         },
         status: "verified",
       },
