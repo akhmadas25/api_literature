@@ -1,4 +1,4 @@
-const { literatur, user } = require("../../models");
+const { literatur, user, sequelize } = require("../../models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
@@ -118,13 +118,25 @@ exports.searchLiteraturs = async (req, res) => {
     const { title, year } = req.body;
     const data = await literatur.findAll({
       where: {
-        title: {
-          [Op.substring]: `%${title}%`,
-        },
-        publication_date: {
-          [Op.substring]: `%${year}`,
-        },
-        status: "verified",
+        [Op.and]: [
+          {
+            title: {
+              [Op.substring]: title,
+            },
+          },
+          sequelize.where(
+            sequelize.cast(
+              sequelize.col("literaturs.publication_date"),
+              "varchar"
+            ),
+            {
+              [Op.startsWith]: year,
+            }
+          ),
+          {
+            status: "verified",
+          },
+        ],
       },
       include: [
         {
