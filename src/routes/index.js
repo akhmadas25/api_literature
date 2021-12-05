@@ -39,6 +39,7 @@ router.get("/checkAuth", auth, checkAuth);
 
 router.post("/addLiteratur", auth, uploadFile("attach"), addLiteratur);
 router.get("/literatur/:id", auth, getLiteratur);
+router.delete("/literatur/:id", auth, deleteCollection);
 router.get("/literaturs", getLiteraturs);
 router.post("/literaturs/search", auth, searchLiteraturs);
 router.patch("/literatur/:id", auth, admin, changeStatus);

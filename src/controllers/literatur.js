@@ -93,9 +93,7 @@ exports.getLiteraturs = async (req, res) => {
           },
         },
       ],
-      order: [
-        ['id', 'DESC']
-      ],
+      order: [["id", "DESC"]],
 
       attributes: {
         exclude: ["createdAt", "updatedAt"],
@@ -231,6 +229,26 @@ exports.editLiteratur = async (req, res) => {
     );
     res.send({
       message: "profile successfully updated!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "server error",
+    });
+  }
+};
+
+exports.deleteLiteratur = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await literatur.destroy({
+      where: {
+        id,
+      },
+    });
+    res.send({
+      status: "success",
+      message: "literatur deleted!",
     });
   } catch (error) {
     console.log(error);
