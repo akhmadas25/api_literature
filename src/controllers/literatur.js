@@ -118,10 +118,10 @@ exports.searchLiteraturs = async (req, res) => {
     const data = await literatur.findAll({
       where: {
         title: {
-          [Op.substring]: title,
+          [Op.substring]: `%${title}%`,
         },
         publication_date: {
-          [Op.startsWith]: year,
+          [Op.startsWith]: `%${year}%`,
         },
         status: "verified",
       },
