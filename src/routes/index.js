@@ -34,7 +34,7 @@ const { updateProfile, getProfile } = require("../controllers/user");
 // Route
 router.post("/login", login);
 router.post("/register", register);
-router.post("/changeProfile", auth, uploadFile("picture"), updateProfile);
+router.patch("/changeProfile", auth, uploadFile("picture"), updateProfile);
 router.get("/checkAuth", auth, checkAuth);
 
 router.post("/addLiteratur", auth, uploadFile("attach"), addLiteratur);
