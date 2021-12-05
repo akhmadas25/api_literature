@@ -126,7 +126,7 @@ exports.searchLiteraturs = async (req, res) => {
           },
           sequelize.where(
             sequelize.cast(
-              sequelize.col("literaturs.publication_date"),
+              sequelize.col("literatur.publication_date"),
               "varchar"
             ),
             {
