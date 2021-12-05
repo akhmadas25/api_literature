@@ -124,19 +124,18 @@ exports.searchLiteraturs = async (req, res) => {
               [Op.substring]: title,
             },
           },
+          {
+            status: "verified",
+          },
           sequelize.where(
             sequelize.cast(
               sequelize.col("literatur.publication_date"),
               "varchar"
             ),
             {
-              [Op.like]: year,
+              [Op.startsWith]: year,
             }
           ),
-
-          {
-            status: "verified",
-          },
         ],
       },
       include: [
