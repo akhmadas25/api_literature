@@ -125,10 +125,13 @@ exports.searchLiteraturs = async (req, res) => {
             },
           },
           sequelize.where(
-            sequelize.literal(
-              "to_char(\"literatur.publication_date\", 'DD.MM.YYYY')"
+            sequelize.cast(
+              sequelize.col("literatur.publication_date"),
+              "varchar"
             ),
-            { [Op.like]: `%${year}%` }
+            {
+              [Op.like]: year,
+            }
           ),
 
           {
